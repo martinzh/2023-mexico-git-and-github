@@ -1,7 +1,7 @@
 # git
 
 ## Setup
-- follow the instructions to create your own SSH-key pair to be used during the school: https://aspp.school/wiki/github-setup
+- follow the instructions to create your own SSH-key pair to be used during the school: https://latam.aspp.school/wiki/github-setup
 
 ## Warm-Up
 - how to start a repo from scratch?
