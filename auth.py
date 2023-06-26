@@ -23,27 +23,29 @@ def add_user(user, password, pwdb):
         pwdb[user] = password
     return pwdb
 
-def authenticate_user(pwdb):
-    user = input('Type user name: ')
-    
+def authenticate_user(user, password, pwdb):
     if user in pwdb:
         print("user is in database")
-        input_password = input('Type password: ')
         stored_password = pwdb[user]
         # we compare the stored password with the one provided by the user
-        if input_password == stored_password:
+        if password == stored_password:
             print("Password is correct!")
         else:
             print("Incorrect password!")
     else:
-        print("user not in database")
+        print("user not in database, adding it")
+        add_user(user, password, pwdb)
 
 if __name__ == '__main__':
+    # We get the database or create a new one if it doesn't exist
     pwdb = read_pwdb()
-    # print(pwdb)
-    # user, password = get_credentials()
-    # add_user(user, password, pwdb)
-    # write_pwdb(pwdb)
-    authenticate_user(pwdb)
 
+    # Get the credentials of the user
+    user, password = get_credentials()
+
+    # Check if the user exists in the DB, and adds it if not
+    authenticate_user(user, password, pwdb)
+    
+    # Updates/writes database to file
+    write_pwdb(pwdb)
     
